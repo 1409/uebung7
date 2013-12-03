@@ -20,7 +20,7 @@
         <td><%= tak.deadline %></td>
         <td><%= tak.done %></td>
         <td><%= tak.duration %></td>
-        <td><%= link_to 'Show', tak %></td>
+        <p id="notice"><%= notice %></p>
         <td><%= link_to 'Edit', edit_tak_path(tak) %></td>
         <td><%= link_to 'Destroy', tak, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
