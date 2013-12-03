@@ -4,7 +4,8 @@ class TaksController < ApplicationController
   # GET /taks
   # GET /taks.json
   def index
-    @taks = Tak.all
+    @done = Tak.where(done: true)
+    @todo = Tak.where(done: false)
   end
 
   # GET /taks/1
