@@ -6,6 +6,8 @@ class TaksController < ApplicationController
   def index
     @done = Tak.where(done: true)
     @todo = Tak.where(done: false)
+    @done = Tak.where(done: true).order(created_at: :desc)
+    @todo = Tak.where(done: false).order(updated_at: :desc)
   end
 
   # GET /taks/1
