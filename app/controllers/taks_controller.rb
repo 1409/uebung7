@@ -4,10 +4,13 @@ class TaksController < ApplicationController
   # GET /taks
   # GET /taks.json
   def index
-    @done = Tak.where(done: true)
-    @todo = Tak.where(done: false)
-    @done = Tak.where(done: true).order(created_at: :desc)
-    @todo = Tak.where(done: false).order(updated_at: :desc)
+    if params[:sorting]
+      @done = Tak.where(done: true).order(params[:sorting] => :desc)
+      @todo = Tak.where(done: false).order(params[:sorting] => :desc)
+    else
+      @done = Tak.where(done: true).order(created_at: :desc)
+      @todo = Tak.where(done: false).order(updated_at: :desc)
+    end
   end
 
   # GET /taks/1
@@ -72,4 +75,4 @@ class TaksController < ApplicationController
     def tak_params
       params.require(:tak).permit(:name, :deadline, :done, :duration)
     end
-end
+  end

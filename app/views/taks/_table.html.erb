@@ -10,8 +10,20 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Deadline</th>
-      <th>Duration</th>
+      <th>
+        <% if params[:sorting] == "deadline" %>
+        Deadline ^
+        <% else %>
+        <%= link_to "Deadline", taks_path(sorting: "deadline") %>
+        <% end %>
+      </th>
+      <th>
+        <% if params[:sorting] == "duration" %>
+        Duration ^
+        <% else %>
+        <%= link_to "Duration", taks_path(sorting: "duration") %>
+        <% end %> 
+      </th>
       <th></th>
       <th></th>
       <th></th>
