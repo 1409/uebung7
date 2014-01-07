@@ -9,6 +9,7 @@
 
   <thead>
     <tr>
+      <th></th>
       <th>Name</th>
       <th>
         <% if params[:sorting] == "deadline" %>
@@ -41,7 +42,6 @@
     <td class="<%= css_class %>"><%= link_to tak.name, edit_tak_path(tak) %></td>
     <td><%= tak.deadline %></td>  
     <td><%= tak.duration %></td>
-    <td><%= link_to tak.name, edit_tak_path(tak) %></td>
     <td><%= link_to 'Destroy', tak, class: "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
   <% end %>
