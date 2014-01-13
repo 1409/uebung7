@@ -1,5 +1,5 @@
 class TaksController < ApplicationController
-  before_action :set_task, only: [:edit, :update, :destroy]
+  before_action :set_tak, only: [:edit, :update, :destroy]
 
   # GET /taks
   # GET /taks.json
@@ -32,8 +32,7 @@ class TaksController < ApplicationController
 
     respond_to do |format|
       if @tak.save
-        format.html { redirect_to @taks_url, notice: 'Tak was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @tak }
+        format.html { redirect_to taks_url, notice: 'Task was successfully created.' }
       else
         format.html { render action: 'new' }
         format.json { render json: @tak.errors, status: :unprocessable_entity }
@@ -46,7 +45,7 @@ class TaksController < ApplicationController
   def update
     respond_to do |format|
       if @tak.update(tak_params)
-        format.html { redirect_to @taks_url, notice: 'Tak was successfully updated.' }
+        format.html { redirect_to taks_url, notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
