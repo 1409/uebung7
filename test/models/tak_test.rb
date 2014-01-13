@@ -11,6 +11,22 @@ class TakTest < ActiveSupport::TestCase
 		tak.deadline = Date.today + 7.days
 		tak.duration = 5.0
 		assert tak.save
+
+	end
+	test "is delayed" do
+		tak = Tak.new
+		tak.deadline = Date.today - 10.days
+		assert tak.is_delayed?
+	end
+	test "is not delayed" do
+		tak = Tak.new
+		tak.deadline = Date.today + 10.days
+		assert !tak.is_delayed?
+	end
+	test "is not delayed if deadline is today" do
+		tak = Tak.new
+		tak.deadline = Date.today
+		assert !tak.is_delayed?
 	end 
 end
 
