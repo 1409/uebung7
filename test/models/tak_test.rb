@@ -28,5 +28,22 @@ class TakTest < ActiveSupport::TestCase
 		tak.deadline = Date.today
 		assert !tak.is_delayed?
 	end 
+	test "destance in days from today" do
+		tak = Tak.new
+		tak.deadline = Date.today
+		assert_equal 0, tak.distance_from_now_in_days
+	end
+
+	test "destance in days from yesterday" do
+		tak = Tak.new
+		tak.deadline = Date.today - 1
+		assert_equal -1, tak.distance_from_now_in_days
+	end
+
+	test "destance in days from tomorrow" do
+		tak = Tak.new
+		tak.deadline = Date.today + 1
+		assert_equal 1, tak.distance_from_now_in_days
+	end 
 end
 
