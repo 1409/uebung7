@@ -29,7 +29,7 @@ class TaksController < ApplicationController
   # POST /taks
   # POST /taks.json
   def create
-    @tak = Tak.new(tak_params)
+    @tak = current_user.taks.new(tak_params)
 
     respond_to do |format|
       if @tak.save
