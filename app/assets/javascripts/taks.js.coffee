@@ -9,5 +9,8 @@ $(document).on 'ready page:load', ->
   $(document).on 'ready page:load', ->
   $(".checkable").click ->
     $(this).parents('form').submit();
+    $(document).on 'ready page:load', ->
+  $(".checkable").click ->
+    $(this).parents('form').submit();
 
 

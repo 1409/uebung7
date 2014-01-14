@@ -40,9 +40,13 @@
       <% end %>
     </td>
     <td class="<%= css_class %>"><%= link_to tak.name, edit_tak_path(tak) %></td>
-    <td><%= tak.deadline %></td>  
+    <td>
+      <%= "in " if !tak.is_delayed? %> 
+      <%= pluralize(tak.distance_from_now_in_days.abs, "Day")  %>
+      <%= " ago " if tak.is_delayed? %> 
+    </td>
     <td><%= tak.duration %></td>
-    <td><%= link_to tak.name, edit_tak_path(tak) %></td>
+
     <td><%= link_to 'Destroy', tak, class: "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
   <% end %>

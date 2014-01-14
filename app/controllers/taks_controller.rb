@@ -1,5 +1,6 @@
 class TaksController < ApplicationController
   before_action :set_tak, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
 
   # GET /taks
   # GET /taks.json

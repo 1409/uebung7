@@ -1,4 +1,5 @@
 Todoapp::Application.routes.draw do
+  devise_for :users
   resources :taks, except: [:show]
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class TaksControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
   setup do
     @tak = taks(:one)
+    @user = users(:one)
   end
 
   test "should get index" do
@@ -13,11 +15,13 @@ class TaksControllerTest < ActionController::TestCase
  end
 
 test "should get new" do
+  sign_in @user
   get :new
   assert_response :success
 end
 
 test "should create tak" do
+  sign_in @user
   assert_difference('Tak.count') do
     post :create, tak: { deadline: @tak.deadline, done: @tak.done, duration: @tak.duration, name: @tak.name }
   end
@@ -26,16 +30,19 @@ test "should create tak" do
 end
 
 test "should get edit" do
+  sign_in @user
   get :edit, id: @tak
   assert_response :success
 end
 
 test "should update tak" do
+  sign_in @user
   patch :update, id: @tak, tak: { deadline: @tak.deadline, done: @tak.done, duration: @tak.duration, name: @tak.name }
   assert_redirected_to taks_url
 end
 
 test "should destroy tak" do
+  sign_in @user
   assert_difference('Tak.count', -1) do
     delete :destroy, id: @tak
   end
