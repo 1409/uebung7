@@ -11,6 +11,7 @@
     <tr>
       <th></th>
       <th>Name</th>
+      <th>User</th>
       <th>
         <% if params[:sorting] == "deadline" %>
         Deadline ^
@@ -40,6 +41,8 @@
       <% end %>
     </td>
     <td class="<%= css_class %>"><%= link_to tak.name, edit_tak_path(tak) %></td>
+    <td> <%= tak.user.username %> </td>
+
     <td>
       <%= "in " if !tak.is_delayed? %> 
       <%= pluralize(tak.distance_from_now_in_days.abs, "Day")  %>
