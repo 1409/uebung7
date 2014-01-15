@@ -11,7 +11,8 @@
     <tr>
       <th></th>
       <th>Name</th>
-      <th>User</th>
+      <th>Created</th>
+      <th>Delegated</th>
       <th>
         <% if params[:sorting] == "deadline" %>
         Deadline ^
@@ -42,6 +43,7 @@
     </td>
     <td class="<%= css_class %>"><%= link_to tak.name, edit_tak_path(tak) %></td>
     <td> <%= tak.user.username %> </td>
+    <td> <%= tak.delegated.username if tak.delegated %> </td>
 
     <td>
       <%= "in " if !tak.is_delayed? %> 

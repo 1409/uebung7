@@ -69,13 +69,13 @@ class TaksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_tak
       @tak = Tak.find(params[:id])
-      if @tak.user_id != current_user.id
+      if @tak.user_id != current_user.id && @tak.delegated_id != current_user.id
         redirect_to taks_url, alert: 'You can edit only your own Tasks.'
       end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tak_params
-      params.require(:tak).permit(:name, :deadline, :done, :duration)
+      params.require(:tak).permit(:name, :deadline, :done, :duration, :delegated_id)
     end
   end

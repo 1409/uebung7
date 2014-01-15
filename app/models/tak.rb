@@ -1,4 +1,5 @@
 class Tak < ActiveRecord::Base
+	belongs_to :delegated, class_name: "User", foreign_key: "delegated_id"
 	belongs_to :user
 	validates :name, presence: true
 	validates :deadline, presence: true
