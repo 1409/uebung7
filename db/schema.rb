@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115134145) do
+ActiveRecord::Schema.define(version: 20140115142110) do
+
+  create_table "projects", force: true do |t|
+    t.string   "todoapp"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "taks", force: true do |t|
     t.string   "name"
@@ -22,9 +28,11 @@ ActiveRecord::Schema.define(version: 20140115134145) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "delegated_id"
+    t.integer  "project_id"
   end
 
   add_index "taks", ["delegated_id"], name: "index_taks_on_delegated_id"
+  add_index "taks", ["project_id"], name: "index_taks_on_project_id"
   add_index "taks", ["user_id"], name: "index_taks_on_user_id"
 
   create_table "users", force: true do |t|
