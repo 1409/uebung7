@@ -7,6 +7,10 @@ class ProjectsController < ApplicationController
 			if !@project.save
 				render action: 'error'
 			end
+			def destroy
+				@project = Project.find(params[:id])
+				@project.destroy
+			end
 		end
 	end
 end
