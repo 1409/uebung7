@@ -11,6 +11,7 @@
     <tr>
       <th></th>
       <th>Name</th>
+      <th>Project</th>
       <th>Created</th>
       <th>Delegated</th>
       <th>
@@ -44,6 +45,7 @@
     <td class="<%= css_class %>"><%= link_to tak.name, edit_tak_path(tak) %></td>
     <td> <%= tak.user.username %> </td>
     <td> <%= tak.delegated.username if tak.delegated %> </td>
+    <td> <%= tak.project.name if tak.project %> </td>
 
     <td>
       <%= "in " if !tak.is_delayed? %> 

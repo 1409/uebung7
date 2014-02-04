@@ -76,6 +76,6 @@ class TaksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tak_params
-      params.require(:tak).permit(:name, :deadline, :done, :duration, :delegated_id)
+      params.require(:tak).permit(:name, :deadline, :done, :duration, :delegated_id, :project_id)
     end
   end
